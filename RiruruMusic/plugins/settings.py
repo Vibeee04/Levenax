@@ -172,10 +172,7 @@ async def without_Admin_rights(client, CallbackQuery, _):
         else:
             buttons = auth_users_markup(_)
 
-    try:
-        return await CallbackQuery.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(buttons))
-    except:
-        return
+    return await CallbackQuery.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(buttons))
 
 
 # Audio Video Quality

@@ -206,8 +206,7 @@ async def song_download_cb(client, CallbackQuery, _):
         await app.send_chat_action(chat_id=CallbackQuery.message.chat.id, action=ChatAction.UPLOAD_VIDEO)
         try:
             await CallbackQuery.edit_message_media(media=med)
-        except Exception as e:
-            print(e)
+        except Exception:
             return await mystic.edit_text(_["song_10"])
         os.remove(file_path)
 
@@ -233,7 +232,6 @@ async def song_download_cb(client, CallbackQuery, _):
         await app.send_chat_action(chat_id=CallbackQuery.message.chat.id, action=ChatAction.UPLOAD_AUDIO)
         try:
             await CallbackQuery.edit_message_media(media=med)
-        except Exception as e:
-            print(e)
+        except Exception:
             return await mystic.edit_text(_["song_10"])
         os.remove(filename)

@@ -11,10 +11,10 @@ from pyrogram import Client
 from pyrogram.enums import ChatMemberStatus
 from pyrogram.types import InlineKeyboardMarkup
 from pyrogram.errors import (
-    ChatAdminRequired, UserAlreadyParticipant, UserNotParticipant, InviteRequestSent, FloodWait
+    ChatAdminRequired, UserAlreadyParticipant, UserNotParticipant, InviteRequestSent, UserDeactivatedBan
 )
 
-from pytgcalls import PyTgCalls, StreamType
+from pytgcalls import PyTgCalls
 from pytgcalls.types.stream import StreamAudioEnded
 from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
 from pytgcalls.types import JoinedGroupCallParticipant, LeftGroupCallParticipant, Update
@@ -169,7 +169,6 @@ class Call(PyTgCalls):
         await assistant.join_group_call(
             config.LOG_GROUP_ID,
             AudioVideoPiped(link),
-            stream_type=StreamType().pulse_stream,
         )
         await asyncio.sleep(0.5)
         await assistant.leave_group_call(config.LOG_GROUP_ID)
@@ -213,6 +212,9 @@ class Call(PyTgCalls):
                     await app.approve_chat_join_request(chat_id, userbot.id)
                 except:
                     raise AssistantErr(_["call_10"].format(userbot.name))
+            except UserDeactivatedBan:
+                await app.send_message(config.LOG_GROUP_ID, _["call_8"].format(userbot.name, userbot.id, userbot.username))
+                raise AssistantErr(_["call_3"].format(e))
             except Exception as e:
                 raise AssistantErr(_["call_3"].format(e))
             await asyncio.sleep(2)
@@ -237,19 +239,11 @@ class Call(PyTgCalls):
         else:
             stream = AudioPiped(link, audio_parameters=audio_stream_quality)
         try:
-            await assistant.join_group_call(
-                chat_id,
-                stream,
-                stream_type=StreamType().pulse_stream,
-            )
+            await assistant.join_group_call(chat_id, stream)
         except NoActiveGroupCall:
             await self.join_assistant(original_chat_id, chat_id)
             try:
-                await assistant.join_group_call(
-                    chat_id,
-                    stream,
-                    stream_type=StreamType().pulse_stream,
-                )
+                await assistant.join_group_call(chat_id, stream)
             except Exception:
                 raise AssistantErr("**ɴᴏ ᴀᴄᴛɪᴠᴇ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ ғᴏᴜɴᴅ**\n\nᴩʟᴇᴀsᴇ ᴍᴀᴋᴇ sᴜʀᴇ ʏᴏᴜ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ᴠɪᴅᴇᴏᴄʜᴀᴛ.")
         except AlreadyJoinedError:
@@ -521,6 +515,5 @@ class Call(PyTgCalls):
                     autoend[chat_id] = datetime.now() + timedelta(minutes=AUTO_END_TIME)
                     return
                 autoend[chat_id] = {}
-
 
 AltCall = Call()

@@ -1,11 +1,12 @@
 from asyncio import sleep
 from strings import get_string
-from config import PLAYLIST_IMG_URL, adminlist
+from config import PLAYLIST_IMG_URL, LOG_GROUP_ID, adminlist
 
 from pyrogram.enums import ChatMemberStatus
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors import (
-    ChatAdminRequired, UserAlreadyParticipant, UserNotParticipant, PeerIdInvalid, InviteRequestSent
+    ChatAdminRequired, UserAlreadyParticipant, UserNotParticipant,
+    PeerIdInvalid, InviteRequestSent, UserDeactivatedBan
 )
 
 from RiruruMusic import YouTube, app
@@ -144,12 +145,15 @@ def PlayWrapper(command):
                         await app.approve_chat_join_request(chat_id, userbot.id)
                     except:
                         return await message.reply_text(_["call_10"].format(userbot.name))
+                except UserDeactivatedBan:
+                    await app.send_message(LOG_GROUP_ID, _["call_8"].format(userbot.name, userbot.id, userbot.username))
+                    return await message.reply_text(_["call_3"].format(e))
                 except Exception as e:
                     return await message.reply_text(_["call_3"].format(e))
                 await sleep(2)
                 await m.edit_text(_["call_5"].format(app.mention))
             except PeerIdInvalid:
-                button = InlineKeyboardMarkup([[InlineKeyboardButton("• ᴄʟɪᴄᴋ ᴛᴏ ᴠᴇʀɪғʏ •", url=f"https://t.me/{app.username}")]])
+                button = InlineKeyboardMarkup([[InlineKeyboardButton("• ᴄʟɪᴄᴋ ᴛᴏ ᴠᴇʀɪғʏ •", url=f"https://t.me/{app.username}?start")]])
                 return await message.reply_text(_["call_9"], reply_markup=button)
 
         return await command(

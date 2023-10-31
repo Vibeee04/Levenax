@@ -118,7 +118,7 @@ def ActualAdminCB(mystic):
                 a = await app.get_chat_member(CallbackQuery.message.chat.id, CallbackQuery.from_user.id)
             except:
                 return await CallbackQuery.answer(_["general_5"], show_alert=True)
-            if (not a.privileges.can_manage_video_chats) and (CallbackQuery.from_user.id not in SUDOERS):
+            if (not a.privileges) or ((not a.privileges.can_manage_video_chats) and (CallbackQuery.from_user.id not in SUDOERS)):
                 token = await int_to_alpha(CallbackQuery.from_user.id)
                 _check = await get_authuser_names(CallbackQuery.from_user.id)
                 if token not in _check:

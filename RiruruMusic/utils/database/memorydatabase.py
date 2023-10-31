@@ -298,6 +298,7 @@ async def add_off(on_off: int):
         return await onoffdb.delete_one({"on_off": on_off})
     return
 
+
 # Maintenance
 
 async def is_maintenance():
@@ -334,14 +335,7 @@ async def maintenance_on():
     return await onoffdb.insert_one({"on_off": 1})
 
 
-from pytgcalls.types.input_stream.quality import (
-    HighQualityAudio,
-    HighQualityVideo,
-    LowQualityAudio,
-    LowQualityVideo,
-    MediumQualityAudio,
-    MediumQualityVideo,
-)
+from pytgcalls.types import AudioParameters, AudioQuality, VideoParameters, VideoQuality
 
 async def save_audio_bitrate(chat_id: int, bitrate: str):
     audio[chat_id] = bitrate
@@ -364,21 +358,21 @@ async def get_vid_bit_name(chat_id: int) -> str:
 async def get_audio_bitrate(chat_id: int) -> str:
     mode = audio.get(chat_id)
     if not mode:
-        return MediumQualityAudio()
+        return AudioParameters.from_quality(AudioQuality.MEDIUM)
     if str(mode) == "High":
-        return HighQualityAudio()
+        return AudioParameters.from_quality(AudioQuality.HIGH)
     elif str(mode) == "Medium":
-        return MediumQualityAudio()
+        return AudioParameters.from_quality(AudioQuality.MEDIUM)
     elif str(mode) == "Low":
-        return LowQualityAudio()
+        return AudioParameters.from_quality(AudioQuality.LOW)
 
 async def get_video_bitrate(chat_id: int) -> str:
     mode = video.get(chat_id)
     if not mode:
-        return MediumQualityVideo()
+        return VideoParameters.from_quality(VideoQuality.SD_480p)
     if str(mode) == "High":
-        return HighQualityVideo()
+        return VideoParameters.from_quality(VideoQuality.HD_720p)
     elif str(mode) == "Medium":
-        return MediumQualityVideo()
+        return VideoParameters.from_quality(VideoQuality.SD_480p)
     elif str(mode) == "Low":
-        return LowQualityVideo()
+        return VideoParameters.from_quality(VideoQuality.SD_360p)

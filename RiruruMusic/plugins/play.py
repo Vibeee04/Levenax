@@ -536,9 +536,7 @@ async def slider_queries(client, CallbackQuery, _):
             media=thumbnail,
             caption=_["play_11"].format(title.title(), duration_min),
         )
-        return await CallbackQuery.edit_message_media(
-            media=med, reply_markup=InlineKeyboardMarkup(buttons)
-        )
+        return await CallbackQuery.edit_message_media(media=med, reply_markup=InlineKeyboardMarkup(buttons))
     elif what == "B":
         if rtype == 0:
             query_type = 9

@@ -1,5 +1,7 @@
 from strings import get_string
 
+from pyrogram.errors import MessageNotModified
+
 from RiruruMusic.misc import SUDOERS
 from RiruruMusic.utils.database import get_lang, is_commanddelete_on, is_maintenance
 
@@ -39,7 +41,11 @@ def languageCB(mystic):
             language = get_string(language)
         except:
             language = get_string("en")
-        return await mystic(_, CallbackQuery, language)
+        try:
+            await mystic(_, CallbackQuery, language)
+        except MessageNotModified:
+            pass
+        return
 
     return wrapper
 

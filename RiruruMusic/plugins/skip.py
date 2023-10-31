@@ -101,8 +101,11 @@ async def skip(cli, message: Message, _, chat_id):
             caption=_["stream_1"].format(title, f"https://t.me/{app.username}?start=info_{videoid}", duration_min, user[:31]),
             reply_markup=InlineKeyboardMarkup(button),
         )
-        db[chat_id][0]["mystic"] = run
-        db[chat_id][0]["markup"] = "tg"
+        try:
+            db[chat_id][0]["mystic"] = run
+            db[chat_id][0]["markup"] = "tg"
+        except IndexError:
+            return await message.reply_text(_["general_6"])
 
     elif "vid_" in queued:
         mystic = await message.reply_text(_["call_7"], disable_web_page_preview=True)
@@ -121,8 +124,11 @@ async def skip(cli, message: Message, _, chat_id):
             caption=_["stream_1"].format(title[:27], f"https://t.me/{app.username}?start=info_{videoid}", duration_min, user[:31]),
             reply_markup=InlineKeyboardMarkup(button),
         )
-        db[chat_id][0]["mystic"] = run
-        db[chat_id][0]["markup"] = "stream"
+        try:
+            db[chat_id][0]["mystic"] = run
+            db[chat_id][0]["markup"] = "stream"
+        except IndexError:
+            return await message.reply_text(_["general_6"])
         await mystic.delete()
 
     elif "index_" in queued:
@@ -136,8 +142,11 @@ async def skip(cli, message: Message, _, chat_id):
             caption=_["stream_2"].format(user[:31]),
             reply_markup=InlineKeyboardMarkup(button),
         )
-        db[chat_id][0]["mystic"] = run
-        db[chat_id][0]["markup"] = "tg"
+        try:
+            db[chat_id][0]["mystic"] = run
+            db[chat_id][0]["markup"] = "tg"
+        except IndexError:
+            return await message.reply_text(_["general_6"])
 
     else:
         try:
@@ -153,8 +162,11 @@ async def skip(cli, message: Message, _, chat_id):
                 caption=_["stream_3"].format(title, check[0]["dur"], user[:31]),
                 reply_markup=InlineKeyboardMarkup(button),
             )
-            db[chat_id][0]["mystic"] = run
-            db[chat_id][0]["markup"] = "tg"
+            try:
+                db[chat_id][0]["mystic"] = run
+                db[chat_id][0]["markup"] = "tg"
+            except IndexError:
+                return await message.reply_text(_["general_6"])
         else:
             button = stream_markup(_, videoid, chat_id)
             img = await gen_thumb(videoid)
@@ -163,5 +175,8 @@ async def skip(cli, message: Message, _, chat_id):
                 caption=_["stream_1"].format(title[:27], f"https://t.me/{app.username}?start=info_{videoid}", duration_min, user[:31]),
                 reply_markup=InlineKeyboardMarkup(button),
             )
-            db[chat_id][0]["mystic"] = run
-            db[chat_id][0]["markup"] = "stream"
+            try:
+                db[chat_id][0]["mystic"] = run
+                db[chat_id][0]["markup"] = "stream"
+            except IndexError:
+                return await message.reply_text(_["general_6"])

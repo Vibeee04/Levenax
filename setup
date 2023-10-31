@@ -61,17 +61,6 @@ packages(){
 	pprint "Playing live streams not going to work since you have ffmpeg $fv, live streams are supported by version 4+.\n" "cblue"
 }
 
-
-node(){
-	command -v npm &>/dev/null && return
-	pprint "Installing Nodejs and Npm..  "
-	curl -fssL https://deb.nodesource.com/setup_18.x | sudo -E bash - &>nodelog.txt &&
-	sudo apt install nodejs -y &>>nodelog.txt &&
-	sudo npm i -g npm &>>nodelog.txt &&
-	pprint "SUCCESS!\n" "cgreen" || (pprint "FAIL.\n" "cred"; exit 1)
-}
-
-
 installation(){
 	pprint "\n\nUpgrading pip and installing dependency packages..."
 	pip3 install -U pip &>>pypilog.txt &&
@@ -82,9 +71,8 @@ installation(){
 }
 
 clear
-pprint "Welcome to RIRURU x1.0 Setup Installer\n\n"
+pprint "Welcome to RIRURU x4.7 Setup Installer\n\n"
 pprint "If you see any error during Installation Process, Please refer to these files for logs: "
-pprint "\nFor node js errors , Checkout nodelog.txt"
 pprint "\nFor pypi packages errors , Checkout pypilog.txt"
 sleep 1
 pprint "\n\nScript needs sudo privileges in order to update & install packages.\n"
@@ -98,5 +86,4 @@ pprint "\n\n\n\n\nRiruru Music Installation Completed !" "cgreen"
 sleep 1
 clear
 
-pprint "\n\n\nThanks for using Riruru Music installer, your vars have been saved successfully ! \nIf you wanna add more variables add them in your env by : vi .env"
 pprint "\n\nNow you can start the bot by : bash start\n\n"
