@@ -19,7 +19,7 @@ DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", "100"))
 
 SONG_DOWNLOAD_DURATION = int(getenv("SONG_DOWNLOAD_DURATION_LIMIT", "60"))
 
-LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", "-1001954218150"))
+LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", ))
 
 OWNER_ID = int(getenv("OWNER_ID", "5980177243"))
 
@@ -28,7 +28,7 @@ UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 
 GIT_TOKEN = getenv("GIT_TOKEN", "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")
 
-SUPPORT_GROUP = getenv("SUPPORT_GROUP", "AltronChats")
+SUPPORT_GROUP = getenv("SUPPORT_GROUP", "RyZenChats")
 
 if SUPPORT_GROUP.startswith("@"):
     SUPPORT_GROUP = SUPPORT_GROUP[1:]
@@ -36,7 +36,7 @@ elif "t.me/" in SUPPORT_GROUP:
     try:
         SUPPORT_GROUP = SUPPORT_GROUP.split("t.me/")[1]
     except:
-        SUPPORT_GROUP = "AltronChats"
+        SUPPORT_GROUP = "Ryzenchats"
 
 AUTO_LEAVING_ASSISTANT = getenv("AUTO_LEAVING_ASSISTANT", "True")
 
@@ -72,7 +72,7 @@ STRING5 = getenv("STRING_SESSION5", None)
 BANNED_USERS = filters.user()
 YTDOWNLOADER = 1
 LOG = 2
-DEV = 5980177243
+DEV = 6677260209
 LOG_FILE_NAME = "AltLogs.txt"
 
 adminlist = {}
