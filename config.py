@@ -26,7 +26,7 @@ OWNER_ID = int(getenv("OWNER_ID", "5980177243"))
 UPSTREAM_REPO = getenv("UPSTREAM_REPO", "https://github.com/TheRiruru/Riruru")
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 
-GIT_TOKEN = getenv("GIT_TOKEN", "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")
+GIT_TOKEN = getenv("GIT_TOKEN", "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")
 
 SUPPORT_GROUP = getenv("SUPPORT_GROUP", "RyZenChats")
 
