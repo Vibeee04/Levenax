@@ -181,7 +181,7 @@ async def start_comm(client, message: Message, _):
 async def testbot(client, message: Message, _):
     out = start_pannel(app.username, _)
     return await message.reply_photo("https://graph.org/file/466080131ab514eba1589.jpg"
-               ,caption= _["start_1"].format(message.chat.title, app.mention),
+               ,caption=_["start_1"].format(message.chat.title, app.mention),
                 reply_markup=InlineKeyboardMarkup(out),
             )
 
