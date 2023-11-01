@@ -29,8 +29,8 @@ SETTINGS_COMMAND = get_command("SETTINGS_COMMAND")
 @language
 async def settings_mar(client, message: Message, _):
     buttons = setting_markup(_)
-    await message.reply_text(
-        _["setting_1"].format(message.chat.id, message.chat.title),
+    await message.reply_photo("https://graph.org/file/13484b9c6634135fab630.jpg"
+        ,caption=_["setting_1"].format(message.chat.id, message.chat.title),
         reply_markup=InlineKeyboardMarkup(buttons),
     )
 
