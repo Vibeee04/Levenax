@@ -83,11 +83,11 @@ clean = {}
 autoclean = []
 db = {}
 
-START_IMG_URL = getenv("START_IMG_URL", "https://te.legra.ph/file/938d91267eedec0f8da06.jpg")
+START_IMG_URL = getenv("START_IMG_URL", "https://graph.org/file/7804a685594195ef3664f.jpg")
 
-PLAYLIST_IMG_URL = getenv("PLAYLIST_IMG_URL", "https://graph.org/file/5a484203f769701065f45.jpg")
+PLAYLIST_IMG_URL = getenv("PLAYLIST_IMG_URL", "https://graph.org/file/27219463204c352b3c345.jpg")
 
-STATS_IMG_URL = getenv("STATS_IMG_URL", "https://graph.org/file/2fe478bf983f4e9963c68.jpg")
+STATS_IMG_URL = getenv("STATS_IMG_URL", "https://graph.org/file/773863ab415c0cf3baa83.jpg")
 
 TELEGRAM_AUDIO_URL = getenv("TELEGRAM_AUDIO_URL", "https://te.legra.ph/file/a44ac871100a1aabb360f.jpg")
 
