@@ -83,7 +83,7 @@ clean = {}
 autoclean = []
 db = {}
 
-START_IMG_URL = getenv("START_IMG_URL", "https://graph.org/file/466080131ab514eba1589.jpg")
+START_IMG_URL = getenv("START_IMG_URL", "https://graph.org/file/e69ca01d5acaf2e5413a8.jpg")
 
 PLAYLIST_IMG_URL = getenv("PLAYLIST_IMG_URL", "https://graph.org/file/27219463204c352b3c345.jpg")
 
