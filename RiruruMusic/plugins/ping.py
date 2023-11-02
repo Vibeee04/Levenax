@@ -24,5 +24,5 @@ async def ping_com(client, message: Message, _):
     resp = (datetime.now() - start).microseconds / 1000
 
     await response.edit_text(
-        _["ping_2"].format(resp, UP, DISK, RAM, CPU, pytgping)
-    ) , disable_web_page_preview=True
+        _["ping_2"].format(resp, UP, DISK, RAM, CPU, pytgping), disable_web_page_preview=True
+    )
