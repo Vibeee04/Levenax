@@ -9,7 +9,7 @@ motor==3.2.0
 ntgcalls
 pillow==9.5.0
 psutil
-py-tgcalls==1.0.0rc4
+py-tgcalls==1.0.8
 pyrogram==2.0.106
 python-dotenv
 pyyaml
