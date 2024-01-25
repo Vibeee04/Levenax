@@ -23,7 +23,7 @@ LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", ))
 
 OWNER_ID = int(getenv("OWNER_ID", "5980177243"))
 
-UPSTREAM_REPO = getenv("UPSTREAM_REPO", "https://github.com/AlphaXstarz/Lavena-us")
+UPSTREAM_REPO = getenv("UPSTREAM_REPO", "https://github.com/Vibeee04/Levenax")
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 
 GIT_TOKEN = getenv("GIT_TOKEN", "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")
