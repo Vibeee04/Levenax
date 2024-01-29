@@ -20,7 +20,7 @@ def private_panel(BOT_USERNAME, _):
             InlineKeyboardButton(text=_["S_B_1"], url=f"https://t.me/{BOT_USERNAME}?startgroup=new")
         ],
         [
-            InlineKeyboardButton(text=_["S_B_3"], url="https://t.me/Hey_Villa"),
+            InlineKeyboardButton(text=_["S_B_3"], url="https://t.me/BharatMusicUpdates"),
             InlineKeyboardButton(text=_["S_B_2"], url=f"https://t.me/{SUPPORT_GROUP}")
         ],
         [
