@@ -28,17 +28,7 @@ UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 
 GIT_TOKEN = getenv("GIT_TOKEN", "cutepagal")
 
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "BHARATMUSICUPDATES")
-
-if SUPPORT_CHANNEL.startswith("@"):
-    SUPPORT_CHANNEL = SUPPORT_CHANNEL[1:]
-elif "t.me/" in SUPPORT_CHANNEL:
-    try:
-        SUPPORT_CHANNEL = SUPPORT_CHANNEL.split("t.me/")[1]
-    except:
-        SUPPORT_CHANNEL = "BHARATMUSICUPDATES"
-
-SUPPORT_GROUP = getenv("SUPPORT_GROUP", "Hey_Villa")
+SUPPORT_GROUP = getenv("SUPPORT_GROUP", "BharatMusicUpdates")
 
 if SUPPORT_GROUP.startswith("@"):
     SUPPORT_GROUP = SUPPORT_GROUP[1:]
@@ -46,7 +36,7 @@ elif "t.me/" in SUPPORT_GROUP:
     try:
         SUPPORT_GROUP = SUPPORT_GROUP.split("t.me/")[1]
     except:
-        SUPPORT_GROUP = "HEY_VILLA"
+        SUPPORT_GROUP = "BharatMusicUpdates"
 
 AUTO_LEAVING_ASSISTANT = getenv("AUTO_LEAVING_ASSISTANT", "True")
 
