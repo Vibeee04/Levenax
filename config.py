@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_ID = int(getenv("API_ID", "25981592"))
-API_HASH = getenv("API_HASH", "709f3c9d34d83873d3c7e76cdd75b866")
+API_ID = int(getenv("API_ID", "cutepagal"))
+API_HASH = getenv("API_HASH", "cutepagal")
 
 BOT_TOKEN = getenv("BOT_TOKEN")
 
@@ -26,9 +26,19 @@ OWNER_ID = int(getenv("OWNER_ID", "5980177243"))
 UPSTREAM_REPO = getenv("UPSTREAM_REPO", "https://github.com/Vibeee04/Levenax")
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 
-GIT_TOKEN = getenv("GIT_TOKEN", "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")
+GIT_TOKEN = getenv("GIT_TOKEN", "cutepagal")
 
-SUPPORT_GROUP = getenv("SUPPORT_GROUP", "RyZenChats")
+SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "BHARATMUSICUPDATES")
+
+if SUPPORT_CHANNEL.startswith("@"):
+    SUPPORT_CHANNEL = SUPPORT_CHANNEL[1:]
+elif "t.me/" in SUPPORT_CHANNEL:
+    try:
+        SUPPORT_CHANNEL = SUPPORT_CHANNEL.split("t.me/")[1]
+    except:
+        SUPPORT_CHANNEL = "BHARATMUSICUPDATES"
+
+SUPPORT_GROUP = getenv("SUPPORT_GROUP", "Hey_Villa")
 
 if SUPPORT_GROUP.startswith("@"):
     SUPPORT_GROUP = SUPPORT_GROUP[1:]
@@ -36,7 +46,7 @@ elif "t.me/" in SUPPORT_GROUP:
     try:
         SUPPORT_GROUP = SUPPORT_GROUP.split("t.me/")[1]
     except:
-        SUPPORT_GROUP = "Ryzenchats"
+        SUPPORT_GROUP = "HEY_VILLA"
 
 AUTO_LEAVING_ASSISTANT = getenv("AUTO_LEAVING_ASSISTANT", "True")
 
